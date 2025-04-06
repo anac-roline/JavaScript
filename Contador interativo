@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador Interativo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+        
+        .counter-container {
+            text-align: center;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        #counter-value {
+            font-size: 3rem;
+            margin: 1rem 0;
+            color: #333;
+        }
+        
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #45a049;
+        }
+        
+        .btn-reset {
+            background-color: #f44336;
+        }
+        
+        .btn-reset:hover {
+            background-color: #d32f2f;
+        }
+        
+        .btn-step {
+            background-color: #2196F3;
+        }
+        
+        .btn-step:hover {
+            background-color: #0b7dda;
+        }
+    </style>
+</head>
+<body>
+    <div class="counter-container">
+        <h1>Contador Interativo</h1>
+        <div id="counter-value">0</div>
+        <div class="buttons">
+            <button class="btn btn-step" id="decrement5">-5</button>
+            <button class="btn" id="decrement">-</button>
+            <button class="btn btn-reset" id="reset">Resetar</button>
+            <button class="btn" id="increment">+</button>
+            <button class="btn btn-step" id="increment5">+5</button>
+        </div>
+    </div>
+
+    <script>
+        // Selecionando elementos
+        const counterElement = document.getElementById('counter-value');
+        const incrementBtn = document.getElementById('increment');
+        const decrementBtn = document.getElementById('decrement');
+        const resetBtn = document.getElementById('reset');
+        const increment5Btn = document.getElementById('increment5');
+        const decrement5Btn = document.getElementById('decrement5');
+
+        // Inicializando variáveis
+        let counter = 0;
+        const MIN_VALUE = -50;
+        const MAX_VALUE = 50;
+
+        // Função para verificar limites
+        function checkLimits() {
+            if (counter <= MIN_VALUE) {
+                alert("Valor mínimo atingido (-50)!");
+                counter = MIN_VALUE;
+            }
+            if (counter >= MAX_VALUE) {
+                alert("Valor máximo atingido (+50)!");
+                counter = MAX_VALUE;
+            }
+        }
+
+        // Função para atualizar o contador
+        function updateCounter() {
+            counterElement.textContent = counter;
+            
+            if (counter > 0) {
+                counterElement.style.color = '#4CAF50';
+            } else if (counter < 0) {
+                counterElement.style.color = '#f44336';
+            } else {
+                counterElement.style.color = '#333';
+            }
+        }
+
+        // Event listeners
+        incrementBtn.addEventListener('click', function() {
+            counter++;
+            checkLimits();
+            updateCounter();
+        });
+
+        decrementBtn.addEventListener('click', function() {
+            counter--;
+            checkLimits();
+            updateCounter();
+        });
+
+        increment5Btn.addEventListener('click', function() {
+            counter += 5;
+            checkLimits();
+            updateCounter();
+        });
+
+        decrement5Btn.addEventListener('click', function() {
+            counter -= 5;
+            checkLimits();
+            updateCounter();
+        });
+
+        resetBtn.addEventListener('click', function() {
+            counter = 0;
+            updateCounter();
+        });
+
+        // Inicialização
+        updateCounter();
+    </script>
+</body>
+</html>
