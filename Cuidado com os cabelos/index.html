@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cuidado com o Cabelo</title>
+
+  <!-- Estilo CSS: define a aparência da página -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff8f0;
+      color: #333;
+    }
+
+    header {
+      background-color: #ffb6c1;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .dica {
+      background-color: #ffe4e1;
+      margin: 10px 0;
+      padding: 15px;
+      border-left: 5px solid #ff69b4;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ff1493;
+    }
+
+    #novaDica {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho da página -->
+  <header>
+    <h1>Dicas de Cuidado com o Cabelo</h1>
+    <p>Aprenda como manter seu cabelo saudável e bonito!</p>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main>
+    <div class="dica" id="dicaAtual">
+      Hidrate seu cabelo pelo menos uma vez por semana.
+    </div>
+
+    <!-- Botão para trocar a dica -->
+    <button onclick="mostrarNovaDica()">Mostrar outra dica</button>
+
+    <!-- Área que pode ser usada para mostrar uma nova dica -->
+    <div id="novaDica"></div>
+  </main>
+
+  <!-- Script JavaScript: adiciona interatividade -->
+  <script>
+    // Lista de dicas sobre cuidados com o cabelo
+    const dicas = [
+      "Evite usar água muito quente ao lavar os cabelos.",
+      "Corte as pontas regularmente para evitar pontas duplas.",
+      "Use protetor térmico antes de usar secador ou chapinha.",
+      "Massageie o couro cabeludo para estimular o crescimento.",
+      "Evite lavar o cabelo todos os dias para não ressecar."
+    ];
+
+    // Função para mostrar uma dica aleatória quando o botão for clicado
+    function mostrarNovaDica() {
+      // Pega uma dica aleatória da lista
+      const dica = dicas[Math.floor(Math.random() * dicas.length)];
+      
+      // Atualiza o conteúdo da <div id="dicaAtual">
+      document.getElementById("dicaAtual").textContent = dica;
+    }
+  </script>
+
+</body>
+</html>
